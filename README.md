@@ -1,3 +1,24 @@
-# zenith_app
-Zenith daily planner prototype
-1. Executive SummaryZenith is a daily productivity application designed to seamlessly integrate a calendar view with a synchronized to-do list. The core objective is to allow users to visually manage their daily tasks by tying specific action items directly to dates, minimizing cognitive load and improving scheduling efficiency.2. Technology StackFrontend Framework: Flutter (Dart)Target Platforms: iOS, Android, WebDevelopment Environment: Firebase Studio (Cloud-based VS Code environment)Version Control: Git & GitHub (zenith_app repository)Planned Backend: Python (FastAPI/SQLite) or BaaS (Firebase/Supabase)3. Current Codebase Architecture (v1.0 Prototype)The current implementation acts as a lightweight, in-memory prototype contained within a single main.dart file.Component BreakdownZenithApp (Root Widget):Initializes the application using MaterialApp.Applies a dark mode theme (0xFF121212 background, Deep Purple accents) for a modern aesthetic.Task (Data Model):A class structure defining a task's properties: id (String), title (String), and isCompleted (Boolean).ZenithDashboard (Stateful Widget):Serves as the main interactive screen.State Management: Uses a Dart Map<DateTime, List<Task>> to store tasks in the device's temporary memory (RAM). Keys are normalized dates (stripping time metadata to avoid timezone mismatch errors).Calendar Integration: Utilizes Flutter's built-in CalendarDatePicker to update the active _selectedDate state.Interactive UI: Implements a ListView.builder combined with Dismissible widgets to allow for swipe-to-delete functionality and dynamic list rendering.4. Planned Database SchemaTo transition from a temporary prototype to a persistent application, the following data structure is planned for the backend implementation.Column NameData TypeDescriptionConstraintstask_idInteger / UUIDUnique identifier for the task.Primary Key, Auto-incrementuser_idStringLinks the task to the authenticated user.Foreign Key, Not NulldateDate / StringThe specific calendar day assigned to the task.Indexed for fast queryingdescriptionTextThe actual to-do item text.Max 255 charactersis_completedBooleanTracks completion status.Default: False (0)
+# zenith_app Summary
+Zenith is a daily productivity application designed to seamlessly integrate a calendar view with a synchronized to-do list. The core objective is to allow users to visually manage their daily tasks by tying specific action items directly to dates, minimizing cognitive load and improving scheduling efficiency.
+
+#Technology Stack
+Frontend Framework: Flutter (Dart)
+Target Platforms: iOS, Android, Web
+Development Environment: Firebase Studio (Cloud-based VS Code environment)
+Version Control: Git & GitHub (zenith_app repository)
+Planned Backend: Python (FastAPI/SQLite) or BaaS (Firebase/Supabase)
+
+#Current Codebase Architecture (v1.0 Prototype)
+The current implementation acts as a lightweight, in-memory prototype contained within a single main.dart file.
+
+Component Breakdown
+ZenithApp (Root Widget):
+ Initializes the application using MaterialApp.
+ Applies a dark mode theme (0xFF121212 background, Deep Purple accents) for a modern aesthetic.
+Task (Data Model):
+ A class structure defining a task's properties: id (String), title (String), and isCompleted (Boolean).
+ ZenithDashboard (Stateful Widget):
+  Serves as the main interactive screen.
+  State Management: Uses a Dart Map<DateTime, List<Task>> to store tasks in the device's temporary memory (RAM). Keys are normalized dates (stripping time metadata to avoid timezone mismatch errors).
+  Calendar Integration: Utilizes Flutter's built-in CalendarDatePicker to update the active _selectedDate state.
+  Interactive UI: Implements a ListView.builder combined with Dismissible widgets to allow for swipe-to-delete functionality and dynamic list rendering.
